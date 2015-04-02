@@ -1,34 +1,12 @@
 package modeloNegocio;
 
-import java.util.GregorianCalendar;
 
 public class Usuario {
 
-	private String nombre;
-	private char sexo;
-	private GregorianCalendar fechaNacimiento;
 	private double peso;
 	private double altura;
 	
 	//Getters & Setters	
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public char getSexo() {
-		return sexo;
-	}
-	public void setSexo(char sexo) {
-		this.sexo = sexo;
-	}
-	public GregorianCalendar getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-	public void setFechaNacimiento(GregorianCalendar fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
 	public double getPeso() {
 		return peso;
 	}
