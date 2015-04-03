@@ -1,7 +1,11 @@
 package modeloNegocio;
 
-public class Rutina {
+public abstract class Rutina {
 
-	public enum Level {NADA, LEVE, MEDIANO, INTENSIVO};
+	public static enum TipoRutina {ACTIVA, SEDENTARIA};
+	public static enum Level {NADA, LEVE, MEDIANO, INTENSIVO};
 	public Level nivelEjercicio;
+	
+	abstract TipoRutina tipo();
+	abstract int aporte();
 }

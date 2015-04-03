@@ -1,6 +1,5 @@
 package modeloNegocio;
 
-
 import java.util.Calendar;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -97,7 +96,6 @@ public class Usuario {
 		return recetasAgregadas;
 	}
 
-	
 	//Métodos publicos
 	public double IMC() {
 		double imc =  peso / (altura * altura);
@@ -147,11 +145,14 @@ public class Usuario {
 		return false;
 	}
 	private boolean fechaNacimientoValida() {
-		if(this.fechaNacimiento.get(Calendar.YEAR) <= Calendar.getInstance().get(Calendar.YEAR))
-			if(this.fechaNacimiento.get(Calendar.MONTH) <= Calendar.getInstance().get(Calendar.MONTH))
-				if(this.fechaNacimiento.get(Calendar.DATE) < Calendar.getInstance().get(Calendar.DATE))
-						return true;
+		if(this.fechaNacimiento.after(Calendar.getInstance()))
+			return false;
+		
+		if(this.fechaNacimiento.get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR))
+			if(this.fechaNacimiento.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH))
+				if(this.fechaNacimiento.get(Calendar.DATE) == Calendar.getInstance().get(Calendar.DATE))
+						return false;
 		//El chequeo se hace asi para evitar el error por el tiempo, solo nos importa la fecha
-		return false;
+		return true;
 	}
 }

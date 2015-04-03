@@ -12,7 +12,9 @@ public class Diabetico implements Condicion {
 
 	@Override
 	public boolean estaSubsanada(Usuario usr) {
-		// TODO Auto-generated method stub
+		if(usr.getRutina().tipo() == Rutina.TipoRutina.ACTIVA)
+			if(usr.getPeso() <= 70)
+				return true;
 		return false;
 	}
 

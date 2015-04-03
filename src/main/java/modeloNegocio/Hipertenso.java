@@ -11,7 +11,8 @@ public class Hipertenso implements Condicion {
 
 	@Override
 	public boolean estaSubsanada(Usuario usr) {
-		// TODO Auto-generated method stub
+		if(usr.getRutina().tipo() == Rutina.TipoRutina.ACTIVA)
+			return true;
 		return false;
 	}
 
