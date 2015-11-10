@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+	<title>Que Comemos?</title>
+
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<!-- CCS Custom para el footer -->
+	<link href="/css/sticky-footer-navbar.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<nav class="navbar navbar-default" role="navigation">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+						</button><a class="navbar-brand" href="/"><span class="glyphicon glyphicon-home"></span></a>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						{{# block "nav-bar"}}
+						{{/block}}
+					</div>
+				</nav>
+			</div>
+    	 </div>
+    	<div class="row">
+			<div class="col-md-12">
+				{{# block "title"}}
+				{{/block}}
+				{{# block "content"}}
+				{{/block}}
+			</div>
+    	 </div>
+	</div>
+
+	<footer class="footer">
+		<div class="container">
+			<p class="text-muted">2015&copy;Space Doritoes</p>
+		</div>
+	</footer>
+	<!-- Parece que si se ponen al final, la página carga más rápido -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/ie10-viewport-bug-workaround.js"></script>
+	<script src="/js/imc.js"></script>
+</body>
+</html>

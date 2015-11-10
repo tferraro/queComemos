@@ -1,0 +1,163 @@
+{{# partial "title"}}
+{{/partial}}
+
+{{# partial "nav-bar"}}
+<ul class="nav navbar-nav">
+	<li>
+		<a href={{linkUsuario}}>Perfil de Usuario</a>
+	</li>
+	<li>
+		<a href={{linkConsultas}}>Consultas</a>
+	</li>
+</ul>
+<form class="navbar-form navbar-right" action="/login" method="post" role="form">
+	<button type="submit" class="btn btn-default">Logout</button>
+</form>
+{{/partial}}
+
+{{# partial "content"}}
+<div class="row">
+	<div class="col-md-12">
+	</div>
+</div>
+<div class="row">
+	<div>
+	
+	</div>
+	<div class="col-md-12">
+		<!-- Nombre y Si es Favorita, el hacer click sobre el icono triggerea un "favoreame" -->
+		<h3>
+			<form action="/" class="navbar-form navbar-left" method="get">
+				<button type="submit" class="btn btn-default" action="/"><a href="/"><span class="glyphicon glyphicon-circle-arrow-left"></a></span></button>
+			</form>
+			<form action="{{linkRecetas}}/{{favName}}{{unfavName}}" class="navbar-form navbar-left" method="post" role="form">				
+				{{nombre}}
+				<button type="submit" class="btn btn-default"><span class="{{favButton}}{{unfavButton}}"></span></button>
+			</form>
+		</h3>
+		<div class="col-md-12">
+			<ul class="list-group">
+				<li class="list-group-item">
+					<div class="input-group">
+						<span class="input-group-addon">Creador</span>
+						<input type="text" class="form-control" value="{{creador}}" readonly>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<div class="input-group">
+						<span class="input-group-addon">Calorias totales</span>
+						<input type="number" class="form-control" value ="{{calorias}}" readonly>
+					</div>
+				</li>
+				<li class="list-group-item">									
+					<form  action="{{linkRecetas}}/nueva_dificultad" method="post" role="form">
+						<span class="btn" id="basic-addon1">Dificultad: {{dificultad}}</span>
+							<select class="btn btn-primary" name="receta_dificultad">
+								<option  value="DIFICIL">Dificil</option>			
+								<option  value="MEDIA">Media</option>			
+								<option  value="FACIL">Facil</option>			
+							</select>
+							<button type="submit" class="btn btn-default">Actualizar Dificultad</button>
+					</form>
+					<div class="input-group" >
+						<form  action="{{linkRecetas}}/nueva_temporada" method="post" role="form">
+							<span class="btn" id="basic-addon1">Temporada: {{tempo}}</span>					
+							<select class="btn btn-primary" name="receta_temporada">
+								{{# temporadas}}
+								<option  value="{{this}}">{{this}}</option>								
+								{{/temporadas}}
+							</select>
+							<button type="submit" class="btn btn-default">Actualizar Temporada</button>
+						</form>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<h5>Descripción:
+						<div class="btn-group" data-toggle="buttons">
+							<p>{{descripcion}}</p>
+						</div>
+					</h5>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-6">						
+			<ul class="list-group">
+				<li class="list-group-item">
+					<div class="table-responsive">
+						<table class="table table-stripped">
+							<thead>
+								<tr>
+									<th>Ingredientes</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{# ingredientes}}
+								<tr>
+									<td>{{nombre}}</td>
+									<td>{{cantidad}}</td>
+								</tr>
+								{{/ingredientes}}
+							</tbody>
+						</table>	
+					</div>
+					<div class="list-group">
+					</div>				
+					<div class "list-group">
+						<h5>Nuevo Ingrediente</h5>		
+						<form  action="{{linkRecetas}}/nuevo_ingrediente" method="post" role="form">
+							<span class="btn" id="basic-addon1">Nombre</span>
+							<select class="btn btn-primary" name="ingrediente_nombre">
+								{{# todos_los_ingredientes}}
+								<option  value="{{this}}">{{this}}</option>											
+								{{/todos_los_ingredientes}}
+							</select>
+							<input type="number" name="ingrediente_cantidad" min="1" class="form-control" placeholder="Cantidad">
+							<input type="number" name="ingrediente_calorias" min="1" class="form-control" placeholder="Calorias">
+							<button type="submit" class="btn btn-default">Agregar Ingrediente</button>
+						</form>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-6">					
+			<ul class="list-group">
+				<li class="list-group-item">
+					<div class="table-responsive">
+						<table class="table table-stripped">
+							<thead>
+								<tr>
+									<th>Condimentos</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{# condimentos}}
+								<tr>
+									<td>{{nombre}}</td>
+									<td>{{cantidad}}</td>
+								</tr>
+								{{/condimentos}}
+							</tbody>
+						</table>
+					</div>	
+					<div class="list-group">
+					</div>	
+					<div class="list-group">
+						<form  action="{{linkRecetas}}/nuevo_condimento" method="post" role="form">
+							<span class="btn" id="basic-addon1">Condimento Nuevo:</span>
+							<input type="text" name="nuevo_condimento_nombre" class="form-control" placeholder="Nombre">
+							<input type="number" name="nuevo_condimento_cant" min="1" class="form-control" placeholder="Calorias">
+							<button type="submit" class="btn btn-default">Agregar Condimento</button>
+						</form>
+					</div>	
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$('input[type="radio" name="dificultad_opciones]').on('change', function() {
+	$('input[name="dificultad_opciones"]').not(this).prop('checked', false);
+});
+</script>
+{{/partial}}
+{{> base.hbs}}

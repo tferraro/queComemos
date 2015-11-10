@@ -1,0 +1,24 @@
+{{# partial "nav-bar"}}
+{{/partial}}
+
+{{# partial "title"}}
+<h1>Login</h1>
+{{/partial}}
+
+{{# partial "content"}}
+<form class="form" action="/login" method="post" role="form">
+	<div class="form-group">
+		<input type="text" name="userName" class="form-control" placeholder="Usuario">
+	</div> 
+	<div class="form-group">
+		<input type="password"name="userPassword" class="form-control" placeholder="Contraseña">
+	</div> 
+	<div class="form-group">
+		<p class="label label-warning">{{mensaje}}</p>
+	</div> 
+	<div class="form-group">
+		<button type="submit" class="btn btn-default">Ingresar</button>
+	</div> 
+</form>
+{{/partial}}
+{{> base.hbs}}

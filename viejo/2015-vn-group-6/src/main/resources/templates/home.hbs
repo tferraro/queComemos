@@ -1,0 +1,62 @@
+{{# partial "title"}}
+{{/partial}}
+
+{{# partial "nav-bar"}}
+<ul class="nav navbar-nav">
+	<li>
+		<a href={{linkUsuario}}>Perfil de Usuario</a>
+	</li>
+	<li>
+		<a href={{linkConsultas}}>Consultas</a>
+	</li>
+</ul>
+<form class="navbar-form navbar-right" action="/login" method="post" role="form">
+	<button type="submit" class="btn btn-default">Logout</button>
+</form>
+{{/partial}}
+
+{{# partial "content"}}
+<div class="row">
+		<div class="col-md-12">
+			<h3 align="center">Últimas Consultas</h3>
+			<div class="col-md-12">
+				<!-- Datos Personales -->
+				<ul class="list-group">
+					<li class="list-group-item">
+						<div class="text-center">
+							<div class="table-responsive">
+								<table class="table table-stripped">
+									<thead style="text-align:center">
+										<tr>
+											<th class="text-center">Nombre</th>
+											<th class="text-center">Calorías</th>
+											<th class="text-center">Dificultad</th>
+											<th class="text-center">Temporada</th>
+											<th class="text-center">Publica</th>
+											<th class="text-center">Dueño</th>
+										</tr>
+									</thead>
+									<tbody style="text-align:center">
+										<tr>
+											{{# recetas}}
+											<tr>
+												<td><a href="/recetas/{{nombre}}">{{nombre}}</a></td>
+												<td>{{calorias_string}}</td>
+												<td>{{dificultad}}</td>
+												<td>{{temporada.nombre}}</td>
+												<td>{{publica}}</td>
+												<td>DUEÑO?</td>
+											</tr>
+											{{/recetas}}
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+	 </div>
+</div>
+{{/partial}}
+{{> base.hbs}}

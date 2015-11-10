@@ -1,0 +1,192 @@
+{{# partial "title"}}
+{{/partial}}
+
+{{# partial "nav-bar"}}
+<ul class="nav navbar-nav">
+	<li>
+		<a href={{linkUsuario}}>Perfil de Usuario</a>
+	</li>
+	<li>
+		<a href={{linkConsultas}}>Consultas</a>
+	</li>
+</ul>
+<form class="navbar-form navbar-right" action="/login" method="post" role="form">
+	<button type="submit" class="btn btn-default">Logout</button>
+</form>
+{{/partial}}
+
+{{# partial "content"}}
+<div class="row">
+	<div class="col-md-12">
+		<h3 align="center">Datos Personales</h3>
+		<div class="col-md-12">
+			<!-- Datos Personales -->
+			<ul class="list-group">
+				<li class="list-group-item">
+					<div class="input-group">
+						<span class="input-group-addon">Nombre</span>
+						<input type="text" class="form-control" value={{nombre}} readonly>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<div class="input-group">
+						<span class="input-group-addon">Fecha de Nacimiento</span>
+						<input type="date" class="form-control" value={{fechaNacimiento}} readonly>
+					</div>
+				</li>
+				<li align="center" class="list-group-item">
+					<h5>Sexo:
+						<div class="btn-group" data-toggle="buttons">
+							<label class="btn btn-primary">
+								<input type="radio" name="genero_opciones" id="masculino">{{genero}}
+							</label>
+						</div>
+					</h5>
+				</li>
+				<li class="list-group-item">
+					<div class="input-group">
+						<span class="input-group-addon">Altura</span>
+						<input type="number" class="form-control" value={{altura}} readonly>
+						<span class="input-group-addon">Peso</span>
+						<input type="number" class="form-control" value={{peso}} readonly>
+					</div>
+				</li>
+				<li align="center" class="list-group-item">
+					<h5><strong>IMC:</strong>
+						<div class="btn-group" data-toggle="buttons">
+							<label id="IMC">{{imc}}</label>
+						</div>
+					</h5>
+				</li>
+			</ul>
+		</div>
+
+		<div class="col-md-12">
+		<div class="col-md-6">							
+			<!-- Preferencias y Condiciones -->
+			<ul class="list-group">
+				<li class="list-group-item">
+					<div class="table-responsive">
+						<table class="table table-stripped">
+							<thead>
+								<tr>
+									<th>Preferencias Alimenticias</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{# preferencias}}
+								<tr>
+									<td>{{this}}</td>
+								</tr>
+								{{/preferencias}}
+							</tbody>
+						</table>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-6">							
+			<!-- Preferencias y Condiciones -->
+			<ul class="list-group">
+				<li class="list-group-item">
+					<div class="table-responsive">
+						<table class="table table-stripped">
+							<thead>
+								<tr>
+									<th>Comidas que le disgustan</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{# disgustan}}
+								<tr>
+									<td>{{this}}</td>
+								</tr>
+								{{/disgustan}}
+							</tbody>
+						</table>
+					</div>
+				</li>
+			</ul>
+		</div>
+		</div>
+		<div class="col-md-12">
+		<div class="col-md-6">							
+			<!-- Preferencias y Condiciones -->
+			<ul class="list-group">
+				<li class="list-group-item">
+					<div class="table-responsive">
+						<table class="table table-stripped">
+							<thead>
+								<tr>
+									<th>Condiciones Prexistentes</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{# condicionesPrex}}
+								<tr>
+									<td>{{this}}</td>
+								</tr>
+								{{/condicionesPrex}}
+							</tbody>
+						</table>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-6">							
+			<!-- Preferencias y Condiciones -->
+			<ul class="list-group">
+				<li class="list-group-item">
+					<span class="input-group-item">Rutina {{rutinaNombre}}</span>
+				</li>
+				<li class="list-group-item">
+					<span class="input-group-item">Nivel: {{rutinalvl}}</span>
+				</li>
+			</ul>
+		</div>
+		</div>
+		<div class="col-md-12">	
+			<!-- Recetas Favoritas -->
+			<ul class="list-group">
+				<li class="list-group-item">
+					<div class="table-responsive">
+						<table class="table table-stripped">
+							<thead>
+								<tr>
+									<th>
+										<div class="input-group">
+										<span class="input-group-addon">Recetas Favoritas</span>
+										</div>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{# favoritas}}
+								<tr>
+									<td>{{nombre}}</td>
+								</tr>
+								{{/favoritas}}
+							</tbody>
+						</table>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var label = document.getElementById('IMC');
+	var imc = Number(label.textContent);
+	if(imc > 30) {
+		label.className = 'btn btn-danger';
+	}
+	if(imc < 30 && imc > 18) {
+		label.className = 'btn btn-success';
+	}
+	if(imc < 18) {
+		label.className = 'btn btn-warning';
+	}
+</script>
+{{/partial}}
+{{> base.hbs}}
+

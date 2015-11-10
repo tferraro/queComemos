@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
+    http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" 
+    version="1.0"> 
+  
+    <persistence-unit name="db" transaction-type="RESOURCE_LOCAL">
+    	<provider>org.hibernate.ejb.HibernatePersistence</provider>
+    		<class>businessModel.usuario.Usuario</class>
+    			<class>businessModel.usuario.Genero</class>
+    		<class>businessModel.usuario.Grupo</class>
+    		<class>businessModel.receta.Receta</class>
+    		 	<class>businessModel.receta.RecetaCompuesta</class>
+    		<class>businessModel.temporada.Temporada</class>
+    			<class>businessModel.temporada.Invierno</class>
+    			<class>businessModel.temporada.Verano</class>
+    			<class>businessModel.temporada.Primavera</class>
+    			<class>businessModel.temporada.Otonio</class>
+    			<class>businessModel.temporada.TodoElAnio</class>
+    		<class>businessModel.receta.Condimento</class>
+    		<class>businessModel.receta.Ingrediente</class>
+    		<class>businessModel.usuario.solicitudes.SolicitudNuevoUsuario</class>
+    		<class>businessModel.rutina.Rutina</class>
+    			<class>businessModel.rutina.RutinaActiva</class>
+    			<class>businessModel.rutina.RutinaSedentaria</class>
+    		<class>businessModel.condicionMedica.CondicionMedica</class>
+    			<class>businessModel.condicionMedica.Celiaco</class>
+    			<class>businessModel.condicionMedica.Diabetico</class>
+    			<class>businessModel.condicionMedica.Hipertenso</class>
+    			<class>businessModel.condicionMedica.Vegano</class>
+    	    <class>consulta.monitorAsincronico.ConsultaAsincronica</class>
+    	    <class>consulta.monitorSincronico.MonitorSincronico</class>
+    	    	<class>consulta.monitorSincronico.MonitorConsultasPorHora</class>
+    	    	<class>consulta.monitorSincronico.MonitorRecetasMasConsultadas</class>
+    	    	<class>consulta.monitorSincronico.MonitorDiezRecetasMasConsultadas</class>
+    	    		<class>consulta.monitorSincronico.RecetaConsultada</class>
+    	    	<class>consulta.monitorSincronico.MonitorRecetasMasConsultadasPorSexo</class>
+    	    	<class>consulta.monitorSincronico.MonitorVeganoConsultaRecetaDificil</class>
+    	 
+        <properties> 
+	    <property name="hibernate.archive.autodetection" value="class"/>        
+        
+            <!--property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" /> 
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/prueba" /> 
+            <property name="hibernate.connection.username" value="root" /> 
+            <property name="hibernate.connection.password" value="mysql" /--> 
+
+            <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver" /> 
+            <property name="hibernate.connection.url" value="jdbc:hsqldb:mem:app-db" /> 
+            <property name="hibernate.connection.username" value="sa" /> 
+            <property name="hibernate.connection.password" value="" /> 
+            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+
+                            
+            <property name="hibernate.show_sql" value="true" /> 
+            <property name="hibernate.format_sql" value="true" /> 
+            <property name="use_sql_comments" value="true" /> 
+            <property name="hibernate.hbm2ddl.auto" value="update" /> 
+        </properties>
+          
+    </persistence-unit> 
+  
+</persistence> 
